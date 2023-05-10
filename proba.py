@@ -20,6 +20,9 @@ request_time = randint(190, 340)
 
 gmail_password = stash.googlePw
 email_address = stash.emailAddress
+input_address = stash.adresa
+input_phone = stash.telefon
+input_name = stash.prezime
 
 def send_email_gmail(subject, message, destination):
     server = smtplib.SMTP('smtp.gmail.com', 587)
@@ -64,15 +67,15 @@ def main():
                 anchorEl.click()
                 time.sleep(3)
                 # FORM HANDLING
-                WebDriverWait(driver, 5).until(EC.element_to_be_clickable(((By.ID, 'powermail_field_name')))).send_keys("Lovrekovic")
+                WebDriverWait(driver, 5).until(EC.element_to_be_clickable(((By.ID, 'powermail_field_name')))).send_keys(input_name)
                 name = driver.find_element(By.ID, 'powermail_field_name')
                 vorname = driver.find_element(By.ID, 'powermail_field_vorname').send_keys("Maja")
-                strasse = driver.find_element(By.ID, 'powermail_field_strasse').send_keys("Lichtenberger Strasse 41")
+                strasse = driver.find_element(By.ID, 'powermail_field_strasse').send_keys(input_address)
                 time.sleep(2)
                 ort = driver.find_element(By.ID, 'powermail_field_ort').send_keys("Berlin")
                 PLZ = driver.find_element(By.ID, 'powermail_field_plz').send_keys("10 243")
-                email = driver.find_element(By.ID, 'powermail_field_e_mail').send_keys("maja.lovrekovic89@gmail.com")
-                telefon = driver.find_element(By.ID, 'powermail_field_telefon').send_keys("017637057117")
+                email = driver.find_element(By.ID, 'powermail_field_e_mail').send_keys(email_address)
+                telefon = driver.find_element(By.ID, 'powermail_field_telefon').send_keys(input_phone)
                 time.sleep(2)
                 datenschutz = driver.find_element(By.ID, 'powermail_field_datenschutzhinweis_1').send_keys(Keys.SPACE)
                 time.sleep(2)
